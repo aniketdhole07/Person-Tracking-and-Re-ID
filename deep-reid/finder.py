@@ -14,12 +14,9 @@ from torchreid.data import ImageDataset
 #    Create own dataset
 
 class NewDataset(ImageDataset):
-    dataset_dir = 'Test_folder'
 
     def __init__(self, root='', **kwargs):
-        self.root = osp.abspath(osp.expanduser(root))
-        self.dataset_dir = osp.join(self.root, self.dataset_dir)
-
+        
         # All you need to do here is to generate three lists,
         # which are train, query and gallery.
         # Each list contains tuples of (img_path, pid, camid),
@@ -37,12 +34,12 @@ class NewDataset(ImageDataset):
 
         # Assuming image format is pid_camid_info.jpg
         # Query pid and camid don't matter can be wrong too
+        
+        #Query Directory
+        q_dir = '/root/a_query/'
+        # Source Directory
+        g_dir = '/root/gao_crop_train_ori/images/'
 
-        q_dir = 'query/'
-        g_dir = 'gallery/'
-
-        q_dir = osp.join(self.dataset_dir, q_dir)
-        g_dir = osp.join(self.dataset_dir, g_dir)
 
         train = [['temp.jpg',0,0]]
         query = []
